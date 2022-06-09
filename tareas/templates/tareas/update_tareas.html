@@ -1,0 +1,27 @@
+{% extends 'tareas/main.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block contend %}
+
+
+
+<div class="center-column">
+
+    <h3 class="text-center">Update Tarea</h3>
+
+    <form method="post" action="">
+        {% csrf_token %}
+
+        {{ forms |crispy }}
+        <br>
+
+        <input class="btn btn-success" type="submit" name="Update tarea" value="Actualizar">
+
+
+    </form>
+
+
+</div>
+
+{% endblock %}

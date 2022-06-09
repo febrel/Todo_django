@@ -1,0 +1,21 @@
+{% extends 'tareas/main.html' %}
+
+{% block contend %}
+
+
+<div class="center-column">
+
+    <p>Esta seguro de eliminar "{{item}}" ?</p>
+
+
+    <a class="btn btn-dark" href="{% url 'lista' %}">Cancelar</a>
+
+    <form method="post" action="" class="d-inline">
+        {% csrf_token %}
+        <input class="btn btn-danger" type="submit" name="Confirmar" value="Confirmar">
+    </form>
+
+
+</div>
+
+{% endblock %}

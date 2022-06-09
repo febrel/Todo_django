@@ -1,0 +1,44 @@
+{% extends 'tareas/main.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block contend %}
+
+
+<div class="center-column">
+    <h3 class="text-center">To do</h3>
+
+    <div class="input_unico">
+        <form method="post" action="/">
+            {% csrf_token %}
+            {{ forms.titulo }}
+            <input class="submit input_unico" type="submit" name="Crear tarea" value="Guardar">
+
+        </form>
+
+    </div>
+
+
+    <div class="todo-list">
+
+        <hr>
+        {% for tarea in tareas %}
+
+        <div class="item-row">
+
+            <a class="btn btn-info" href="{% url 'update_tareas' tarea.id %}"> <i class="bi bi-pencil"></i> </a>
+            <a class="btn btn-danger" href="{% url 'delete_tareas' tarea.id %}"> <i class="bi bi-trash3"> </i></a>
+
+            {% if tarea.completo == True %}
+            <strike> {{tarea}} </strike>
+
+            {% else %}
+            <span> {{tarea}} </span>
+            {% endif %}
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
